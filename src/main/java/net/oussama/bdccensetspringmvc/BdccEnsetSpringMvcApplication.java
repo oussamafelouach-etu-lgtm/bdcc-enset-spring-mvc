@@ -6,12 +6,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration;
-import org.springframework.boot.security.autoconfigure.SecurityAutoConfiguration;
+
+import org.springframework.boot.security.autoconfigure.web.servlet.SecurityFilterAutoConfiguration;
+import org.springframework.boot.security.autoconfigure.web.servlet.ServletWebSecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.sql.DataSource;
-
-@SpringBootApplication(exclude ={SecurityAutoConfiguration.class, DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude = {
+        ServletWebSecurityAutoConfiguration.class,
+        SecurityFilterAutoConfiguration.class
+})
 public class BdccEnsetSpringMvcApplication {
 
     public static void main(String[] args) {
@@ -36,8 +41,8 @@ public class BdccEnsetSpringMvcApplication {
                     .price(12000)
                     .quantity(40)
                     .build());
-            productRepository.findAll().forEach(product -> {
-                System.out.println(product.toString());
+            productRepository.findAll().forEach(p -> {
+                System.out.println(p.toString());
             });
         };
 
