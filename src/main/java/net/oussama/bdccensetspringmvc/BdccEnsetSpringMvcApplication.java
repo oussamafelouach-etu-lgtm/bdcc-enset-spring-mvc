@@ -13,10 +13,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.sql.DataSource;
-@SpringBootApplication(exclude = {
-        ServletWebSecurityAutoConfiguration.class,
-        SecurityFilterAutoConfiguration.class
-})
+//@SpringBootApplication(exclude = {ServletWebSecurityAutoConfiguration.class, SecurityFilterAutoConfiguration.class})
+@SpringBootApplication
 public class BdccEnsetSpringMvcApplication {
 
     public static void main(String[] args) {
